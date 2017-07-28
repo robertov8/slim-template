@@ -29,3 +29,8 @@ services:
             - PMA_PASSWORD=root
         links:
             - db
+
+    composer:
+        image: composer:latest
+        volumes:
+            - ./www:/var/www/html
