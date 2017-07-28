@@ -41,7 +41,7 @@ project/www $ docker-compose run manager composer create-project codeigniter/fra
   * www
             
 ### PHPMyAdmin
-* PMA_USER=root
-* PMA_PASSWORD=root
+* `PMA_USER=root`
+* `PMA_PASSWORD=root`
 * ports
   * 8080
