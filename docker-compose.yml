@@ -15,7 +15,7 @@ services:
             - "80:80"
             - "443:443"
         volumes:
-            - ./www:/var/www/html
+            - .:/var/www/html
         links:
             - db
 
@@ -30,7 +30,7 @@ services:
         links:
             - db
 
-    composer:
+    manager:
         image: composer:latest
         volumes:
-            - ./www:/var/www/html
+            - .:/app

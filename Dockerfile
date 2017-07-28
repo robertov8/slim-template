@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:apache
 
 # Environments
 ENV TIMEZONE            America/Sao_Paulo
