@@ -11,21 +11,27 @@ Project - Directory Apps
 project $ mkdir www && cd www
 ```
 
-Create Project - CodeIgniter
-```
-project/www $ composer create-project codeigniter/framework
-```
-
 Start docker
 ```
 project $ docker-compose up
 ```
 
+Composer 
+```
+project/www $ docker-compose run manager composer list
+```
+
+Create Project - CodeIgniter
+```
+project/www $ docker-compose run manager composer create-project codeigniter/framework
+```
+
+
 ## Config
 
 ### mysql
-* MYSQL_ROOT_PASSWORD=root
-* MYSQL_DATABASE=root
+* `MYSQL_ROOT_PASSWORD=root`
+* `MYSQL_DATABASE=root`
 
 ### PHP
 * ports
