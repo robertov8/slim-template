@@ -5,10 +5,10 @@ ENV TIMEZONE            America/Sao_Paulo
 
 ##### INSTALL DEPENDENCIES #####
 # System
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get upgrade -y
-RUN apt-get dist-upgrade -y
+# RUN apt-get update
+# RUN apt-get upgrade -y
+# RUN apt-get upgrade -y
+# RUN apt-get dist-upgrade -y
 # PHP
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
@@ -23,6 +23,6 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 RUN echo "${TIMEZONE}" > /etc/timezone
 
 # System
-RUN apt-get autoremove -y
-RUN apt-get clean
-RUN apt-get autoclean
+# RUN apt-get autoremove -y
+# RUN apt-get clean
+# RUN apt-get autoclean
