@@ -22,6 +22,11 @@ project/www $ docker-compose run manager composer list
 project/www $ docker-compose run manager composer dump-autoload --optimize 
 ```
 
+Fix Permissions
+```
+sudo chmod 777 -R logs
+```
+
 Create Project - CodeIgniter
 ```
 project/www $ docker-compose run manager composer create-project codeigniter/framework
