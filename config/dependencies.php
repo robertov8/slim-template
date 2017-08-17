@@ -1,13 +1,22 @@
 <?php
-
 // DIC configuration
 $container = $app->getContainer();
+
+// Capsule ORM Eloquent
+$db = $settings['settings']['db'];
+$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($db);
+
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
 
 // view renderer
 $container['renderer'] = function ($c) {
     $settings = $c->get('settings')['renderer'];
     return new Slim\Views\PhpRenderer($settings['template_path']);
 };
+
 
 // monolog
 $container['logger'] = function ($c) {
@@ -17,23 +26,6 @@ $container['logger'] = function ($c) {
     $logger->pushHandler($file_handler);
     return $logger;
 };
-
-// container PDO
-$container['db'] = function ($c) {
-    $db = $c->get('settings')['db'];
-    $pdo = new PDO(
-        'mysql:host=' . $db['host'] .
-        ';dbname=' . $db['dbname'],
-        $db['user'],
-        $db['pass']
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-    return $pdo;
-};
-
 
 /*
 // Manipule Errors
@@ -46,6 +38,7 @@ $container['errorHandler'] = function ($c) {
     };
 };
 
+
 // Manipule 404 Not Found
 $container['notFoundHandler'] = function ($c) {
     return function ($request, $response) use ($c) {
@@ -55,6 +48,7 @@ $container['notFoundHandler'] = function ($c) {
             ->write('Page not found!');
     };
 };
+
 
 // Manipule 405 Not Allowed
 $container['notAllowedHandler'] = function ($c) {
@@ -66,6 +60,7 @@ $container['notAllowedHandler'] = function ($c) {
             ->write('Method must be one: ' . implode(', ', $methods));
     };
 };
+
 
 // Manipule PHP Error Handler (PHP 7+ only)
 $container['phpErrorHandler'] = function ($c) {
