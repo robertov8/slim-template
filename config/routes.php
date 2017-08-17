@@ -42,17 +42,6 @@ $app->put('/photo/{id}', function ($request, $response, $args) {
     return $response->getBody()->write($photo->toJson());
 });
 
-$app->get('/[{name}]', function ($request, $response, $args) {
-    $renderer = $this->get('renderer');
-    return $renderer->render($response, 'index.phtml', $args);
-})->add(function ($request, $response, $next) {
-    $response->getBody()->write('O middware sendo aplicado antes da requisição.');
-    $response = $next($request, $response);
-    $response->getBody()->write('Depois da requisição.');
-
-    return $response;
-});
-
 $app->group('/utils', function () use ($app) {
     $app->get('/date', function ($request, $response) {
         return $response->getBody()->write(date('Y-m-d H:i:s'));
@@ -65,6 +54,17 @@ $app->group('/utils', function () use ($app) {
     $response->getBody()->write('It is now ');
     $response = $next($request, $response);
     $response->getBody()->write('. Enjoy!');
+
+    return $response;
+});
+
+$app->get('/[{name}]', function ($request, $response, $args) {
+    $renderer = $this->get('renderer');
+    return $renderer->render($response, 'index.phtml', $args);
+})->add(function ($request, $response, $next) {
+    $response->getBody()->write('O middware sendo aplicado antes da requisição.');
+    $response = $next($request, $response);
+    $response->getBody()->write('Depois da requisição.');
 
     return $response;
 });
