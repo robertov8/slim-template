@@ -19,6 +19,7 @@ project $ docker-compose up
 Composer 
 ```
 project/www $ docker-compose run manager composer list
+project/www $ docker-compose run manager composer dump-autoload --optimize 
 ```
 
 Create Project - CodeIgniter
