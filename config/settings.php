@@ -15,10 +15,14 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'host'   => 'db',
-            'user'   => 'root',
-            'pass'   => 'root',
-            'dbname' => 'slimapp'
+            'driver'    => 'mysql',
+            'host'      => 'db',
+            'database'  => 'slimapp',
+            'username'  => 'root',
+            'password'  => 'root',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => ''
         ],
     ],
 ];

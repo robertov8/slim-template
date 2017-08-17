@@ -1,14 +1,12 @@
 <?php
+$app->get('/photo', 'App\Controller\PhotoController:index');
+$app->get('/photo/{id}', 'App\Controller\PhotoController:show');
+$app->post('/photo', 'App\Controller\PhotoController:new');
+$app->delete('/photo/{id}', 'App\Controller\PhotoController:delete');
+$app->put('/photo/{id}', 'App\Controller\PhotoController:update');
 
-$app->get(
-    '/[{name}]',
-    'App\Controller\HomeController:home'
-)->add(App\Middleware\HomeMiddleware::class);
-
-$app->any(
-    '/api/[{id}]',
-    'App\Controller\ApiController'
-);
+// Tratando multiplos verbos
+$app->any('/api/[{id}]', 'App\Controller\ApiController');
 
 $app->group('/utils', function () use ($app) {
     $app->get('/date', function ($request, $response) {
@@ -25,3 +23,8 @@ $app->group('/utils', function () use ($app) {
 
     return $response;
 });
+
+$app->get(
+    '/[{name}]',
+    'App\Controller\HomeController:home'
+)->add(App\Middleware\HomeMiddleware::class);
