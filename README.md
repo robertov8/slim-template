@@ -1,37 +1,31 @@
 # docker-php
 Docker with php, mariadb and phpmyadmin
 
+[Template](https://github.com/robertov82008/slim-template/)
 [Template simplificado](https://github.com/robertov82008/slim-template/tree/easy)
 
 Clone
-```
+```bash
 $ git clone git@github.com:robertov82008/docker-php.git project && cd project
 ```
 
-Project - Directory Apps
-```
-project $ mkdir www && cd www
-```
-
 Start docker
-```
+```bash
 project $ docker-compose up
 ```
 
 Composer 
-```
-project/www $ docker-compose run manager composer list
-project/www $ docker-compose run manager composer dump-autoload --optimize 
+```bash
+project $ docker-compose run manager composer list
 ```
 
-Fix Permissions
-```
+Fix's 
+```bash
+# Permissions
 sudo chmod 777 -R logs
-```
 
-Create Project - CodeIgniter
-```
-project/www $ docker-compose run manager composer create-project codeigniter/framework
+# Autoload composer 
+project $ docker-compose run manager composer dump-autoload --optimize 
 ```
 
 
