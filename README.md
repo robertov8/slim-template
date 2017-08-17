@@ -1,6 +1,8 @@
 # docker-php
 Docker with php, mariadb and phpmyadmin
 
+[Template simplificado](https://github.com/robertov82008/slim-template/tree/easy)
+
 Clone
 ```
 $ git clone git@github.com:robertov82008/docker-php.git project && cd project
